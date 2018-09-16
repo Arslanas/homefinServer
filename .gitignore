@@ -3,6 +3,9 @@
 *.jar
 temp*
 mvnw*
+*.http
+!restApiTest*
+PersonController*
 
 ### STS ###
 .apt_generated
