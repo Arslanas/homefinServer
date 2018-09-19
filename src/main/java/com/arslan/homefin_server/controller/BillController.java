@@ -9,13 +9,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("bill")
+@CrossOrigin(origins = "http://localhost:4200")
 public class BillController {
 
     @Autowired
     BillService service;
 
     @GetMapping()
-    public List<Bill> getAll() { return service.findAll();
+    public Bill getAll() { return service.findOne(1L);
     }
 
     @GetMapping("{id}")

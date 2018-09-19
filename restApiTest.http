@@ -1,28 +1,32 @@
 ###########___________User
-GET http://localhost:8080/user
+GET http://localhost:8080/users
+Accept: */*
+Cache-Control: no-cache
+###
+GET http://localhost:8080/users?email=andrew@gmail.com
 Accept: */*
 Cache-Control: no-cache
 ###
 
-GET http://localhost:8080/user/2
+GET http://localhost:8080/users/2
 Accept: application/json
 Cache-Control: no-cache
 ###
-POST http://localhost:8080/user
+POST http://localhost:8080/users
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"name":"Michael","email":10000,"password":"michael@gmail.com","handler":{},"hibernateLazyInitializer":{}}
+{"name":"Michael","email":10000,"password":"michael@gmail.com"}
 ###
-PUT http://localhost:8080/user
+PUT http://localhost:8080/users
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"id":1, "name":"MichaelPut","email":10000,"password":"michaelPut@gmail.com","handler":{},"hibernateLazyInitializer":{}}
+{"id":1, "name":"MichaelPut","email":10000,"password":"michaelPut@gmail.com"}
 ###
-DELETE http://localhost:8080/user/3
+DELETE http://localhost:8080/users/3
 Accept: application/json
 Cache-Control: no-cache
 ###
@@ -42,14 +46,14 @@ Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"value":15000,"currency":"RUB","handler":{},"hibernateLazyInitializer":{}}
+{"value":15000,"currency":"RUB"}
 ###
 PUT http://localhost:8080/bill
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"id":1,"value":65000,"currency":"$","handler":{},"hibernateLazyInitializer":{}}
+{"id":1,"value":85000,"currency":"$"}
 ###
 DELETE http://localhost:8080/bill/1
 Accept: application/json
@@ -57,59 +61,59 @@ Cache-Control: no-cache
 ###
 
 ###########___________Category
-GET http://localhost:8080/category
+GET http://localhost:8080/categories
 Accept: */*
 Cache-Control: no-cache
 ###
 
-GET http://localhost:8080/category/2
+GET http://localhost:8080/categories/2
 Accept: application/json
 Cache-Control: no-cache
 ###
-POST http://localhost:8080/category
+POST http://localhost:8080/categories
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
 {"name":"Home","capacity":10000,"handler":{},"hibernateLazyInitializer":{}}
 ###
-PUT http://localhost:8080/category
+PUT http://localhost:8080/categories
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
 {"id":1,"name":"Car","capacity":4000,"handler":{},"hibernateLazyInitializer":{}}
 ###
-DELETE http://localhost:8080/category/3
+DELETE http://localhost:8080/categories/3
 Accept: application/json
 Cache-Control: no-cache
 ###
 
 ###########___________Event
-GET http://localhost:8080/event
+GET http://localhost:8080/events
 Accept: */*
 Cache-Control: no-cache
 ###
 
-GET http://localhost:8080/event/2
+GET http://localhost:8080/events/2
 Accept: application/json
 Cache-Control: no-cache
 ###
-POST http://localhost:8080/event
+POST http://localhost:8080/events
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"type":"outc","amount":1500.00,"category":1,"date":"12.08.2017", "description":"Car","handler":{},"hibernateLazyInitializer":{}}
+{"type":"outc","amount":1500.00,"category":1,"date":"12.08.2017", "description":"Car"}
 ###
-PUT http://localhost:8080/event
+PUT http://localhost:8080/events
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"id":5,"type":"put","amount":3210.00,"category":3,"date":"12.08.2017","description":"CarPut","handler":{},"hibernateLazyInitializer":{}}
+{"id":5,"type":"put","amount":3210.00,"category":3,"date":"12.08.2017","description":"CarPut"}
 ###
-DELETE http://localhost:8080/event/3
+DELETE http://localhost:8080/events/4
 Accept: application/json
 Cache-Control: no-cache
 ###

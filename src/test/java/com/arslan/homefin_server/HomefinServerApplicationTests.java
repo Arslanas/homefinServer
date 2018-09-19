@@ -33,14 +33,4 @@ public class HomefinServerApplicationTests {
     @Test
     public void contextLoads() {
     }
-
-    @Test
-    public void testFindLastnameByFirstname(){
-        // when
-        Person person = personService.findByFirstname("Alex");
-        // then
-        assertEquals(person.getLastname(), "Brown");
-
-        assertEquals(eventService.findOne(1l).getDescription(), "Food");
-    }
 }

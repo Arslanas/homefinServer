@@ -1,9 +1,9 @@
 INSERT into Person values (1, 'Alex', 'Brown');
 INSERT into Person values (2, 'Smith', 'Wesson');
 
-INSERT into Event values (1, 2500, 1, '18.10.2018', 'Entertainment', 'outcome');
-INSERT into Event values (2, 1500, 1, '12.11.2018', 'Car', 'income');
-INSERT into Event values (3, 5200, 3, '24.10.2018', 'Home', 'outcome');
+INSERT into Event values (1, 2500, 1, '12.06.2017 19:49:02', 'Entertainment', 'outcome');
+INSERT into Event values (2, 1500, 1, '12.06.2017 19:49:02', 'Car', 'income');
+INSERT into Event values (3, 5200, 3, '12.06.2017 19:49:02', 'Home', 'outcome');
 
 INSERT into BILL values (1, 'RUB', 250000);
 
