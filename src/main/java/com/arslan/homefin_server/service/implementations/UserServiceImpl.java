@@ -21,4 +21,9 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
     public User getUserByEmail(String email) {
         return repository.getUserByEmail(email);
     }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return repository.getUserByUsername(username);
+    }
 }

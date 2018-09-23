@@ -1,3 +1,43 @@
+###########___________AuthJwt
+POST http://localhost:8080/auth/signup
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"name":"Michael", "username":"Mich","email":"michael@gmail.com","password":"dasdqwe"}
+###
+POST http://localhost:8080/auth/signup
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"name":"Alia", "username":"AliaUser","email":"alia@gmail.com","password":"dafvncxbuorwq"}
+###
+
+POST http://localhost:8080/auth/signin
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"username":"AndrewUser", "password":"as8akl"}
+###
+
+POST http://localhost:8080/auth/signin
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"username":"AliaUser", "password":"dafvncxbuorwq"}
+###
+POST http://localhost:8080/auth/signin
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"username":"Mich", "password":"dasdqwe"}
+###
+
+
 ###########___________User
 GET http://localhost:8080/users
 Accept: */*
