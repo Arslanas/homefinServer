@@ -14,9 +14,9 @@ INSERT into Event values (3, 5200, 3, '12.06.2017 19:49:02', 'Home', 'outcome');
 
 INSERT into BILL values (1, 'RUB', 250000);
 
-INSERT into USERS values (1,'andrew@gmail.com','Andrew',  'as8akl', 'AndrewUser');
-INSERT into USERS values (2,'mask@gmail.com', 'Mask', 'asyjrx42sse', 'MaskUser');
-INSERT into USERS values (3,'mia@gmail.com', 'Mia', 'asdxzcwq', 'MiaUser');
+INSERT into USERS values (1,'andrew@gmail.com','Andrew',  '$2a$10$7nlpP1Qlc23mhco18.PGyupjcuRBIVTUIwu7qGAr.ngKYS1YM9IT2', 'AndrewUser');
+INSERT into USERS values (2,'mask@gmail.com', 'Mask', '$2a$10$7nlpP1Qlc23mhco18.PGyupjcuRBIVTUIwu7qGAr.ngKYS1YM9IT2', 'MaskUser');
+INSERT into USERS values (3,'mia@gmail.com', 'Mia', '$2a$10$7nlpP1Qlc23mhco18.PGyupjcuRBIVTUIwu7qGAr.ngKYS1YM9IT2', 'MiaUser');
 
 INSERT into CATEGORY values (1, 15000, 'Home');
 INSERT into CATEGORY values (2, 4000, 'Car');

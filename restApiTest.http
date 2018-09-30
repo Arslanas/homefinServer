@@ -1,3 +1,9 @@
+###########___________CurrencyTest
+GET http://data.fixer.io/api/latest?access_key=045c429915bce5ab8772387f75420c28
+Accept: */*
+Cache-Control: no-cache
+###
+
 ###########___________AuthJwt
 POST http://localhost:8080/auth/signup
 Accept: */*
@@ -11,7 +17,7 @@ Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"name":"Alia", "username":"AliaUser","email":"alia@gmail.com","password":"dafvncxbuorwq"}
+{"name":"Alia", "username":"AliaUser","email":"alia@gmail.com","password":"dasdqwe"}
 ###
 
 POST http://localhost:8080/auth/signin
@@ -19,7 +25,7 @@ Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"username":"AndrewUser", "password":"as8akl"}
+{"username":"AndrewUser", "password":"dasdqwe"}
 ###
 
 POST http://localhost:8080/auth/signin
@@ -27,7 +33,7 @@ Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"username":"AliaUser", "password":"dafvncxbuorwq"}
+{"username":"AliaUser", "password":"dasdqwe"}
 ###
 POST http://localhost:8080/auth/signin
 Accept: */*

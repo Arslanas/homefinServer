@@ -21,9 +21,12 @@ public class UserController {
     UserService service;
 
     @GetMapping()
-    public List<User> getAll(@Param("email") String email) {
+    public List<User> getAll(@Param("email") String email, @Param("username") String username) {
         if(email != null){
             return Arrays.asList(service.getUserByEmail(email));
+        }
+        if(username != null){
+            return Arrays.asList(service.getUserByUsername(username));
         }
         return service.findAll();
     }
