@@ -3,6 +3,9 @@ package com.arslan.homefin_server.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,9 +16,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String username;
+
+    @NotBlank
+    @Email
     private String email;
+
+    @NotBlank
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)

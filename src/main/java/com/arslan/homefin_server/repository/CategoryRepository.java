@@ -4,6 +4,10 @@ import com.arslan.homefin_server.entity.Category;
 import com.arslan.homefin_server.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+import java.util.List;
 
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+    List<Category> findAllByUserId(long userId);
+    Category findByUserIdAndId(long userId, long id);
+    void deleteByUserIdAndAndId(long userId, long id);
 }

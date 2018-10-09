@@ -1,5 +1,6 @@
 package com.arslan.homefin_server.security.controller;
 
+import com.arslan.homefin_server.entity.Bill;
 import com.arslan.homefin_server.entity.Role;
 import com.arslan.homefin_server.entity.RoleName;
 import com.arslan.homefin_server.entity.User;
@@ -11,6 +12,8 @@ import com.arslan.homefin_server.security.payload.ApiResponse;
 import com.arslan.homefin_server.security.payload.JwtAuthenticationResponse;
 import com.arslan.homefin_server.security.payload.LoginRequest;
 import com.arslan.homefin_server.security.payload.SignUpRequest;
+import com.arslan.homefin_server.service.interfaces.BillService;
+import com.arslan.homefin_server.util.HomefinAuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.Collections;
 
@@ -38,6 +42,9 @@ public class AuthController {
     UserRepository userRepository;
 
     @Autowired
+    BillService billService;
+
+    @Autowired
     RoleRepository roleRepository;
 
     @Autowired
@@ -48,18 +55,18 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-
+        System.out.println(loginRequest);
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsername(),
                         loginRequest.getPassword()
                 )
         );
-
+        System.out.println(authentication);
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
+        User user = userRepository.getUserByUsername(loginRequest.getUsername());
         String jwt = tokenProvider.generateToken(authentication);
-        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+        return ResponseEntity.ok(new HomefinAuthenticationResponse(new JwtAuthenticationResponse(jwt), user.getId()));
     }
 
     @PostMapping("/signup")
@@ -86,6 +93,10 @@ public class AuthController {
         user.setRoles(Collections.singleton(userRole));
 
         User result = userRepository.save(user);
+
+        Bill bill = new Bill(new BigDecimal(0), "RUB", result.getId());
+
+        billService.save(bill);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/users/{username}")

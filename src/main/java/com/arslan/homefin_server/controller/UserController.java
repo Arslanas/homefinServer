@@ -6,8 +6,11 @@ import com.arslan.homefin_server.service.interfaces.EventService;
 import com.arslan.homefin_server.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +22,9 @@ public class UserController {
 
     @Autowired
     UserService service;
+
+    @Autowired
+    PasswordEncoder encoder;
 
     @GetMapping()
     public List<User> getAll(@Param("email") String email, @Param("username") String username) {
@@ -37,13 +43,14 @@ public class UserController {
     }
 
     @PutMapping()
-    public User update(@RequestBody User event) {
-        return service.save(event);
+    public User update(@Valid @RequestBody User user) {
+        return service.save(user);
     }
 
     @PostMapping()
-    public User create(@RequestBody User event) {
-        return service.save(event);
+    public User create(@Valid @RequestBody User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
+        return service.save(user);
     }
 
     @DeleteMapping("{id}")

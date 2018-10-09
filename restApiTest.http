@@ -81,6 +81,7 @@ Cache-Control: no-cache
 GET http://localhost:8080/bill
 Accept: */*
 Cache-Control: no-cache
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTM4NjI2MjQ5LCJleHAiOjE1MzkyMzEwNDl9.AucBOBbk73yX_hNk7tvb-aB0_C_xnhr_JH_UI_niqpdGKx326dGwhLHx7eX-7TKphFWGROI_0XQkx7tS6bF9sg
 ###
 
 GET http://localhost:8080/bill/2
@@ -98,6 +99,7 @@ PUT http://localhost:8080/bill
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
+
 
 {"id":1,"value":85000,"currency":"$"}
 ###
@@ -121,14 +123,14 @@ Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"name":"Home","capacity":10000,"handler":{},"hibernateLazyInitializer":{}}
+{"name":"Home","capacity":10000}
 ###
 PUT http://localhost:8080/categories
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"id":1,"name":"Car","capacity":4000,"handler":{},"hibernateLazyInitializer":{}}
+{"id":1,"name":"Car","capacity":4000}
 ###
 DELETE http://localhost:8080/categories/3
 Accept: application/json
@@ -181,14 +183,14 @@ Accept: */*
 Content-Type: application/json
 Cache-Control: no-cache
 
-{"id":3,"firstname":"Arslan","lastname":"Ovezov","handler":{},"hibernateLazyInitializer":{}}
+{"id":3,"firstname":"Arslan","lastname":"Ovezov"}
 ###
 PUT http://localhost:8080/person
 Accept: */*
 Content-Type: application/json
 Cache-Control: no-cache
 
-{"id":1,"firstname":"Arslan","lastname":"Ovezov","handler":{},"hibernateLazyInitializer":{}}
+{"id":1,"firstname":"Arslan","lastname":"Ovezov"}
 ###
 DELETE http://localhost:8080/person/3
 Accept: application/json

@@ -24,7 +24,20 @@ public class EventServiceImpl extends GenericServiceImpl<EventEntity, Long> impl
         this.repository = repository;
     }
 
+    @Override
+    public List<EventEntity> findAllByUserId(long id) {
+        return repository.findAllByUserId(id);
+    }
 
+    @Override
+    public EventEntity findOneByUserId(long userId, long id) {
+        return repository.findByUserIdAndId(userId, id);
+    }
+
+    @Override
+    public void deleteOneByUserId(long userId, long id) {
+        repository.deleteByUserIdAndAndId( userId, id);
+    }
 }
 
 

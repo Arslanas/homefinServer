@@ -6,6 +6,8 @@ import com.arslan.homefin_server.service.interfaces.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryServiceImpl extends GenericServiceImpl<Category, Long> implements CategoryService {
 
@@ -17,4 +19,18 @@ public class CategoryServiceImpl extends GenericServiceImpl<Category, Long> impl
         this.repository = repository;
     }
 
+    @Override
+    public List<Category> findAllByUserId(long id) {
+        return repository.findAllByUserId(id);
+    }
+
+    @Override
+    public Category findOneByUserId(long userId, long id) {
+        return repository.findByUserIdAndId(userId, id);
+    }
+
+    @Override
+    public void deleteOneByUserId(long userId, long id) {
+        repository.deleteByUserIdAndAndId( userId, id);
+    }
 }
