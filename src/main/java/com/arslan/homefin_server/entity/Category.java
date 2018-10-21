@@ -8,6 +8,8 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "CATEGORY")
@@ -24,6 +26,9 @@ public class Category {
     private long capacity;
     @NotNull
     private long userId;
+
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "category")
+    List<EventEntity> events = new ArrayList<>();
 
     public Category() {
     }
