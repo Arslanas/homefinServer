@@ -27,13 +27,7 @@ public class UserController {
     PasswordEncoder encoder;
 
     @GetMapping()
-    public List<User> getAll(@Param("email") String email, @Param("username") String username) {
-        if(email != null){
-            return Arrays.asList(service.getUserByEmail(email));
-        }
-        if(username != null){
-            return Arrays.asList(service.getUserByUsername(username));
-        }
+    public List<User> getAll() {
         return service.findAll();
     }
 

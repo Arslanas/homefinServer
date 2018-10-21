@@ -39,6 +39,6 @@ public class EventEntityController {
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") Long id) {
-        service.deleteOneByUserId(id, HomefinUtil.getUserId());
+        service.deleteOneByUserId( HomefinUtil.getUserId(), id);
     }
 }

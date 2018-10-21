@@ -6,6 +6,7 @@ import javax.validation.constraints.*;
 
 @Data
 public class SignUpRequest {
+
     @NotBlank
     private String name;
 

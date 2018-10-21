@@ -1,4 +1,17 @@
-###########___________CurrencyTest
+###########___________EmailExists
+GET http://localhost:8080/auth/emailExists?email=andrew@gmail.com
+Accept: */*
+Cache-Control: no-cache
+###########___________UsernameExists
+GET http://localhost:8080/auth/usernameExists?username=AndrewUser
+Accept: */*
+Cache-Control: no-cache
+###########___________CurrencyTest2
+GET https://api.exchangeratesapi.io/latest
+Accept: */*
+Cache-Control: no-cache
+
+##############___________CurrencyTest
 GET http://data.fixer.io/api/latest?access_key=045c429915bce5ab8772387f75420c28
 Accept: */*
 Cache-Control: no-cache

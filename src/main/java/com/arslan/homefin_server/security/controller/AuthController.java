@@ -15,6 +15,7 @@ import com.arslan.homefin_server.security.payload.SignUpRequest;
 import com.arslan.homefin_server.service.interfaces.BillService;
 import com.arslan.homefin_server.util.HomefinAuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -55,14 +56,12 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-        System.out.println(loginRequest);
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsername(),
                         loginRequest.getPassword()
                 )
         );
-        System.out.println(authentication);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         User user = userRepository.getUserByUsername(loginRequest.getUsername());
         String jwt = tokenProvider.generateToken(authentication);
@@ -80,7 +79,6 @@ public class AuthController {
             return new ResponseEntity(new ApiResponse(false, "Email Address already in use!"),
                     HttpStatus.BAD_REQUEST);
         }
-
         // Creating user's account
         User user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
                 signUpRequest.getEmail(), signUpRequest.getPassword());
@@ -91,7 +89,6 @@ public class AuthController {
                 .orElseThrow(() -> new AppException("User Role not set."));
 
         user.setRoles(Collections.singleton(userRole));
-
         User result = userRepository.save(user);
 
         Bill bill = new Bill(new BigDecimal(0), "RUB", result.getId());
@@ -101,7 +98,16 @@ public class AuthController {
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/users/{username}")
                 .buildAndExpand(result.getUsername()).toUri();
-
         return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
     }
+
+    @GetMapping("/usernameExists")
+    public boolean usernameExists(@Param("username") String username){
+        return userRepository.existsByUsername(username);
+    }
+    @GetMapping("/emailExists")
+    public boolean emailExists(@Param("email") String email){
+        return userRepository.existsByEmail(email);
+    }
+
 }

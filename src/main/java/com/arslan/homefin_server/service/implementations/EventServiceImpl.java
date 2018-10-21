@@ -36,7 +36,7 @@ public class EventServiceImpl extends GenericServiceImpl<EventEntity, Long> impl
 
     @Override
     public void deleteOneByUserId(long userId, long id) {
-        repository.deleteByUserIdAndAndId( userId, id);
+        repository.deleteByUserIdAndId( userId, id);
     }
 }
 

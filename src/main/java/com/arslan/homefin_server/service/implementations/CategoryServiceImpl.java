@@ -5,10 +5,12 @@ import com.arslan.homefin_server.repository.CategoryRepository;
 import com.arslan.homefin_server.service.interfaces.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class CategoryServiceImpl extends GenericServiceImpl<Category, Long> implements CategoryService {
 
     private CategoryRepository repository;
