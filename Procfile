@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -jar target/homefin_server-0.0.1-SNAPSHOT.jar --port $PORT --uri-encoding UTF-8
