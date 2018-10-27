@@ -37,6 +37,7 @@ public class CategoryController{
 
     @PostMapping()
     public Category create(@Valid @RequestBody Category object) {
+        System.out.println(object);
         return service.save(object);
     }
 
