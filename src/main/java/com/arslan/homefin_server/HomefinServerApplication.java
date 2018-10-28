@@ -16,11 +16,7 @@ public class HomefinServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HomefinServerApplication.class, args);
+        System.out.println("It runs урааааааа");
     }
-    @Bean
-    public HttpMessageConverter<String> responseBodyConverter() {
-        StringHttpMessageConverter converter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
-        converter.setSupportedMediaTypes(Arrays.asList(new MediaType("text", "plain", Charset.forName("UTF-8"))));
-        return converter;
-    }
+
 }
