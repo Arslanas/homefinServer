@@ -4,7 +4,7 @@ Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-{"name":"Дом","capacity":10000}
+{"name":"Дом","capacity":10000,"userId":1}
 
 
 ###########___________Testing UTF8
