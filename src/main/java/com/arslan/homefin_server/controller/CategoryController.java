@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @RestController
@@ -48,6 +49,7 @@ public class CategoryController {
         }
         System.out.println("Default Charset = "+ Charset.defaultCharset());
         System.out.println("asdasd   фывфывывф");
+        service.save(new Category("домик", (int)Math.random(), 1));
         return null;
 //        System.out.println(object);
 //        return service.save(object);
