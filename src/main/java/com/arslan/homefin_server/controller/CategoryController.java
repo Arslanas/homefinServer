@@ -35,19 +35,19 @@ public class CategoryController {
     }
 
     @PostMapping()
-    public Category create(@Valid @RequestBody Category object) {
-//        String test;
-//        try {
-//            if ("POST".equalsIgnoreCase(request.getMethod())) {
-//                test = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-//                System.out.println(test);
-//            }
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-      //  return null;
-        System.out.println(object);
-        return service.save(object);
+    public Category create(@Valid @RequestBody Category object, HttpServletRequest request) {
+        String test;
+        try {
+            if ("POST".equalsIgnoreCase(request.getMethod())) {
+                test = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+                System.out.println(test);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+//        System.out.println(object);
+//        return service.save(object);
     }
 
     @DeleteMapping("{id}")
