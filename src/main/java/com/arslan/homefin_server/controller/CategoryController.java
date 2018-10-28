@@ -38,10 +38,10 @@ public class CategoryController {
     public Category create(HttpServletRequest request) {
         String test;
         try {
-            if ("POST".equalsIgnoreCase(request.getMethod())) {
+
                 test = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
                 System.out.println(test);
-            }
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

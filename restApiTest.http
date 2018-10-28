@@ -2,7 +2,7 @@
 POST https://homefin-server.herokuapp.com/categories
 Accept: */*
 Cache-Control: no-cache
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded;charset=UTF-8
 
 {"name":"Дом","capacity":10000,"userId":1}
 
