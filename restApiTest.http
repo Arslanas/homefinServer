@@ -1,3 +1,13 @@
+###########___________Testing UTF8
+POST http://localhost:8080/categories
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"name":"Дом","capacity":10000}
+
+
+
 ###########___________EmailExists
 GET http://localhost:8080/auth/emailExists?email=andrew@gmail.com
 Accept: */*
