@@ -35,7 +35,7 @@ public class CategoryController {
     }
 
     @PostMapping()
-    public Category create(@Valid @RequestBody Category object, HttpServletRequest request) {
+    public Category create(HttpServletRequest request) {
         String test;
         try {
             if ("POST".equalsIgnoreCase(request.getMethod())) {
