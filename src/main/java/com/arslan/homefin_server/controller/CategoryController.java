@@ -45,6 +45,7 @@ public class CategoryController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        System.out.println("asdasd   фывфывывф");
         return null;
 //        System.out.println(object);
 //        return service.save(object);
