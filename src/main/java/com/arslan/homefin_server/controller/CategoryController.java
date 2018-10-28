@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,6 +46,7 @@ public class CategoryController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        System.out.println("Default Charset = "+ Charset.defaultCharset());
         System.out.println("asdasd   фывфывывф");
         return null;
 //        System.out.println(object);
