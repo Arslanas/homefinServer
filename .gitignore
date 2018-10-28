@@ -1,6 +1,7 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 *.jar
+*.idea
 temp*
 mvnw*
 *.http
