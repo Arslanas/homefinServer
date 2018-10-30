@@ -49,7 +49,7 @@ public class CategoryController {
         }
         System.out.println("Default Charset = "+ Charset.defaultCharset());
         System.out.println("asdasd   фывфывывф");
-        service.save(new Category("домик", new Random(2).nextInt(), 1));
+        service.save(new Category("дом ик", new Random(2).nextInt(), 1));
         return null;
 //        System.out.println(object);
 //        return service.save(object);
