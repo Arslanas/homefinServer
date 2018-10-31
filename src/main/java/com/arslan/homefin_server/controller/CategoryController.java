@@ -50,6 +50,7 @@ public class CategoryController {
         System.out.println("Default Charset = "+ Charset.defaultCharset());
         System.out.println("asdasd   фывфывывф");
         service.save(new Category("дом ик", 230, 1));
+        System.out.println(service.findAll());
         return null;
 //        System.out.println(object);
 //        return service.save(object);
