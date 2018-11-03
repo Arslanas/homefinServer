@@ -16,7 +16,6 @@ public class HomefinServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HomefinServerApplication.class, args);
-        System.out.println("It runs урааааааа");
     }
 
 }
