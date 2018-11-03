@@ -22,9 +22,9 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = {"homefin_server"})
+@ComponentScan(basePackages = {"com"})
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"homefin_server"})
+@EnableJpaRepositories(basePackages = {"com"})
 @PropertySource(value = "classpath:application.properties")
 public class RootConfig {
 
@@ -64,7 +64,7 @@ public class RootConfig {
         emf.setDataSource(dataSource);
         emf.setJpaProperties(properties);
         emf.setJpaVendorAdapter(adapter);
-        emf.setPackagesToScan("homefin_server");
+        emf.setPackagesToScan("com");
         return emf;
     }
 
