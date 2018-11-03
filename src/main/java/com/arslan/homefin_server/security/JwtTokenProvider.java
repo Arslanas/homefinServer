@@ -1,7 +1,9 @@
 package com.arslan.homefin_server.security;
 
 import io.jsonwebtoken.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -10,12 +12,14 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-
-    @Value("${app.jwtSecret}")
     private String jwtSecret;
-
-    @Value("${app.jwtExpirationInMs}")
     private int jwtExpirationInMs;
+
+    @Autowired
+    public JwtTokenProvider(Environment env){
+        this.jwtSecret = env.getProperty("app.jwtSecret");
+        this.jwtExpirationInMs = env.getProperty("app.jwtExpirationInMs", Integer.class);
+    }
 
     public String generateToken(Authentication authentication) {
 
