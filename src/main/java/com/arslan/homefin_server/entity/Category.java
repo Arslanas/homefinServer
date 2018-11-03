@@ -25,6 +25,7 @@ public class Category {
     @NotNull
     private long capacity;
     @NotNull
+    @Column(name = "user_id")
     private long userId;
 
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "category")

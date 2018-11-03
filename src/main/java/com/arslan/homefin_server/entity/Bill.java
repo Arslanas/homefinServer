@@ -24,6 +24,7 @@ public class Bill {
     @NotBlank
     private String currency;
     @NotNull
+    @Column(name = "user_id")
     private long userId;
 
     public Bill() {

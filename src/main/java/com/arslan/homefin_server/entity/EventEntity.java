@@ -30,6 +30,7 @@ public class EventEntity {
     @NotBlank
     private String description;
     @NotNull
+    @Column(name = "user_id")
     private long userId;
 
     public EventEntity() {
