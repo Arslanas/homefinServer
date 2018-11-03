@@ -86,12 +86,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/users/**").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/auth/**", "/h2-console/**").permitAll()
-                ;
-//                .anyRequest()
-//                .authenticated();
+                .anyRequest()
+                .authenticated();
 
-        // Add our custom JWT security filter
-      //  http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+       //  Add our custom JWT security filter
+        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 }
