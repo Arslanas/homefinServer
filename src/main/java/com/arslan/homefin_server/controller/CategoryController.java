@@ -37,23 +37,8 @@ public class CategoryController {
     }
 
     @PostMapping()
-    public Category create(HttpServletRequest request) {
-        String test;
-        try {
-
-                test = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-                System.out.println(test);
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println("Default Charset = "+ Charset.defaultCharset());
-        System.out.println("asdasd   фывфывывф");
-        service.save(new Category("дом ик", 230, 1l));
-        System.out.println(service.findAll());
-        return null;
-//        System.out.println(object);
-//        return service.save(object);
+    public Category create(@Valid @RequestBody Category object) {
+        return service.save(object);
     }
 
     @DeleteMapping("{id}")
