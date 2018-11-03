@@ -11,17 +11,10 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-@PropertySource(value = "classpath:application.properties")
 public class JwtTokenProvider {
 
-    private String jwtSecret;
-    private int jwtExpirationInMs;
-
-    @Autowired
-    public JwtTokenProvider(Environment env){
-        this.jwtSecret = env.getProperty("app.jwtSecret");
-        this.jwtExpirationInMs = env.getProperty("app.jwtExpirationInMs", Integer.class);
-    }
+    private String jwtSecret = "JWTSuperSecretKey";
+    private int jwtExpirationInMs = 604800000;
 
     public String generateToken(Authentication authentication) {
 
