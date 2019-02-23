@@ -30,4 +30,13 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
         return repository.getUserByUsername(username);
     }
 
+    @Override
+    public boolean existsByUsername(String username) {
+        return repository.existsByUsername(username);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return repository.existsByEmail(email);
+    }
 }

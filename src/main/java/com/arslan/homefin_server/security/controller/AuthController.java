@@ -5,7 +5,6 @@ import com.arslan.homefin_server.entity.Role;
 import com.arslan.homefin_server.entity.RoleName;
 import com.arslan.homefin_server.entity.User;
 import com.arslan.homefin_server.repository.RoleRepository;
-import com.arslan.homefin_server.repository.UserRepository;
 import com.arslan.homefin_server.security.JwtTokenProvider;
 import com.arslan.homefin_server.security.exception.AppException;
 import com.arslan.homefin_server.security.payload.ApiResponse;
@@ -13,6 +12,7 @@ import com.arslan.homefin_server.security.payload.JwtAuthenticationResponse;
 import com.arslan.homefin_server.security.payload.LoginRequest;
 import com.arslan.homefin_server.security.payload.SignUpRequest;
 import com.arslan.homefin_server.service.interfaces.BillService;
+import com.arslan.homefin_server.service.interfaces.UserService;
 import com.arslan.homefin_server.util.HomefinAuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -40,7 +40,7 @@ public class AuthController {
     AuthenticationManager authenticationManager;
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @Autowired
     BillService billService;
@@ -63,19 +63,19 @@ public class AuthController {
                 )
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        User user = userRepository.getUserByUsername(loginRequest.getUsername());
+        User user = userService.getUserByUsername(loginRequest.getUsername());
         String jwt = tokenProvider.generateToken(authentication);
         return ResponseEntity.ok(new HomefinAuthenticationResponse(new JwtAuthenticationResponse(jwt), user.getId()));
     }
 
     @PostMapping("/signup")
     public ResponseEntity registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-        if(userRepository.existsByUsername(signUpRequest.getUsername())) {
+        if(userService.existsByUsername(signUpRequest.getUsername())) {
             return new ResponseEntity(new ApiResponse(false, "Username is already taken!"),
                     HttpStatus.BAD_REQUEST);
         }
 
-        if(userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if(userService.existsByEmail(signUpRequest.getEmail())) {
             return new ResponseEntity(new ApiResponse(false, "Email Address already in use!"),
                     HttpStatus.BAD_REQUEST);
         }
@@ -89,7 +89,7 @@ public class AuthController {
                 .orElseThrow(() -> new AppException("User Role not set."));
 
         user.setRoles(Collections.singleton(userRole));
-        User result = userRepository.save(user);
+        User result = userService.save(user);
 
         Bill bill = new Bill(new BigDecimal(0), "RUB", result.getId());
 
@@ -103,11 +103,11 @@ public class AuthController {
 
     @GetMapping("/usernameExists")
     public boolean usernameExists(@Param("username") String username){
-        return userRepository.existsByUsername(username);
+        return userService.existsByUsername(username);
     }
     @GetMapping("/emailExists")
     public boolean emailExists(@Param("email") String email){
-        return userRepository.existsByEmail(email);
+        return userService.existsByEmail(email);
     }
 
 }
