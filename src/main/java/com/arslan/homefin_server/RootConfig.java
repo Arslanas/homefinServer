@@ -16,6 +16,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.client.RestTemplate;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -56,10 +57,10 @@ public class RootConfig {
     @Autowired
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(JpaVendorAdapter adapter, DataSource dataSource){
         Properties properties = new Properties();
-        properties.setProperty("hibernate.format_sql", String.valueOf(true));
+        properties.setProperty("hibernate.format_sql", "true");
         properties.setProperty("hibernate.connection.CharSet","utf8");
         properties.setProperty("hibernate.connection.characterEncoding","utf8");
-        properties.setProperty("hibernate.connection.useUnicode", String.valueOf(true));
+        properties.setProperty("hibernate.connection.useUnicode", "true");
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource);
         emf.setJpaProperties(properties);
@@ -76,5 +77,10 @@ public class RootConfig {
     @Bean
     public BeanPostProcessor persistenceTranslation(){
         return new PersistenceExceptionTranslationPostProcessor();
+    }
+
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
     }
 }
