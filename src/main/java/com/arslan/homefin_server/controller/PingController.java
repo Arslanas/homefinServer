@@ -13,9 +13,8 @@ import org.springframework.web.client.RestTemplate;
 public class PingController {
     @Autowired
     RestTemplate restTemplate;
- //   private final String server = "https://homefin-server.herokuapp.com";
     private final String server = "https://pizzars.herokuapp.com/ping/pingResponse";
-    private double min = .5;
+    private double min = 20;
     private int count;
     private int responseCount;
 
@@ -37,10 +36,10 @@ public class PingController {
 
     private void infinitePingOfServer(String url, double min){
         while (true) {
-            sleepFor(min);
             getResponse(url);
             count++;
             System.out.println(count);
+            sleepFor(min);
         }
     }
     private void getResponse(String url) {
