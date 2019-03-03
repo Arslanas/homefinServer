@@ -13,18 +13,29 @@ import org.springframework.web.client.RestTemplate;
 public class PingController {
     @Autowired
     RestTemplate restTemplate;
-    private final String server = "https://homefin-server.herokuapp.com";
-    private int min = 1;
+ //   private final String server = "https://homefin-server.herokuapp.com";
+    private final String server = "https://pizzars.herokuapp.com/ping/pingResponse";
+    private double min = .5;
     private int count;
+    private int responseCount;
 
 
     @GetMapping()
     public void ping() {
         infinitePingOfServer(server, min);
     }
+    @GetMapping("pingResponse")
+    public String pingResponse() {
+        responseCount++;
+        return "HomefinServer_response_OK";
+    }
+    @GetMapping("getResponseCount")
+    public int getResponseCount() {
+        return responseCount;
+    }
 
 
-    private void infinitePingOfServer(String url, int min){
+    private void infinitePingOfServer(String url, double min){
         while (true) {
             sleepFor(min);
             getResponse(url);
@@ -35,9 +46,10 @@ public class PingController {
     private void getResponse(String url) {
         ResponseEntity<Object> entity = restTemplate.getForEntity(url, Object.class);
     }
-    private void sleepFor(int min){
+    private void sleepFor(double min){
+        long time = (long) min * 1000 * 60;
         try {
-            Thread.sleep(min * 1000 * 60);
+            Thread.sleep(time);
         } catch (Exception e) {
             e.printStackTrace();
         }
