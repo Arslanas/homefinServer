@@ -17,7 +17,7 @@ public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private long id;
+    private lodsng id;
 
     @NotNull
     private BigDecimal value;
